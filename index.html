@@ -7,7 +7,6 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 </head>
 
 <body>
@@ -15,20 +14,23 @@
         <section class="container md:mx-auto mt-5">
             <div class="navbar bg-base-100">
                 <div class="flex-1">
-                    <a class="btn btn-ghost text-xl">daisyUI</a>
+                    <a class="btn btn-ghost text-xl hidden lg:block ">Modern Forum</a>
+                    <button class="btn btn-circle lg:hidden">
+                        <img src="img/menu.svg">
+                    </button>
                 </div>
                 <div class="flex-none">
                     <ul class="menu menu-horizontal px-1 flex items-center gap-2">
-                        <li><button class="btn btn-circle tooltip" data-tip="Home">
+                        <li><button class="btn btn-circle tooltip hidden lg:block" data-tip="Home">
                                 <img class="ml-3" src="img/home.svg" alt="">
                             </button></li>
-                        <li><button class="btn btn-circle tooltip" data-tip="Edit">
+                        <li><button class="btn btn-circle tooltip hidden lg:block" data-tip="Edit">
                                 <img class="ml-3" src="img/pencil.svg" alt="">
                             </button></li>
-                        <li><button class="btn btn-circle tooltip" data-tip="Add">
+                        <li><button class="btn btn-circle tooltip hidden lg:block" data-tip="Add">
                                 <img class="ml-3" src="img/personAdd.svg" alt="">
                             </button></li>
-                        <li><button class="btn btn-circle tooltip" data-tip="flag"><img class="ml-3" src="img/flag.svg"></button>
+                        <li><button class="btn btn-circle tooltip hidden lg:block" data-tip="flag"><img class="ml-3" src="img/flag.svg"></button>
 
                             
                         <li><button class="btn btn-primary rounded-3xl ">Sign In</button></li>
