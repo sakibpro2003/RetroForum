@@ -1,6 +1,10 @@
 const postCardContainer = document.getElementById("postCardContainer");
 const postViewContainer = document.getElementById("postViewContainer");
 const latestPostContainer = document.getElementById("latestPostContainer");
+const searchBtn = document.getElementById('searchBtn')
+const searchFunc = () =>{
+  console.log(document.getElementById("inputField").value);
+}
 let readCount = 0;
 async function fetchData() {
   const response = await fetch(
@@ -155,7 +159,7 @@ const showPost = (data) => {
                     </div>
     `;
     postCardContainer.appendChild(cardCreate);
-    onlineStatus(element.isActive);
+    // onlineStatus(element.isActive);
   });
 };
 
