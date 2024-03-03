@@ -1,19 +1,23 @@
 const postCardContainer = document.getElementById("postCardContainer");
 const postViewContainer = document.getElementById("postViewContainer");
-
+let readCount = 0;
 async function fetchData() {
   const response = await fetch(
     "https://openapi.programming-hero.com/api/retro-forum/posts"
   );
   const data = await response.json();
   console.log(data.posts);
+
   showPost(data.posts);
 }
+const viewCount = document.getElementById("viewCount");
+
+const viewChange = () => {
+  viewCount.innerText = readCount;
+};
 
 const addToRead = (postName, view_count) => {
-  // console.log(postName , view_count);
   const createNew = document.createElement("div");
-  // postViewContainer.classList.add('bg-white rounded-lg gap-10 flex p-4');
   createNew.innerHTML = `
 <div class=" bg-white rounded-lg gap-10 flex p-4 mt-4">
                             <p>${postName}</p>
@@ -24,6 +28,8 @@ const addToRead = (postName, view_count) => {
                         </div>
 `;
   postViewContainer.appendChild(createNew);
+  readCount++;
+  viewChange();
 };
 
 fetchData();
