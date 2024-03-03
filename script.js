@@ -1,15 +1,71 @@
 const postCardContainer = document.getElementById("postCardContainer");
 const postViewContainer = document.getElementById("postViewContainer");
+const latestPostContainer = document.getElementById("latestPostContainer");
+
 let readCount = 0;
 async function fetchData() {
-  const response = await fetch(
-    "https://openapi.programming-hero.com/api/retro-forum/posts"
-  );
+  const response = await fetch();
+  // "https://openapi.programming-hero.com/api/retro-forum/posts"
+
   const data = await response.json();
   console.log(data.posts);
 
   showPost(data.posts);
 }
+
+async function latestFetch() {
+  const res = await fetch(
+    "https://openapi.programming-hero.com/api/retro-forum/latest-posts"
+  );
+  const data2 = await res.json();
+  // console.log(data2[0].title);
+  fetchLatest(data2);
+}
+const fetchLatest = (data2) => {
+  data2.forEach((element2) => {
+    // console.log(element2.title)
+    const createnew3 = document.createElement("div");
+    createnew3.innerHTML = `
+<div class=" p-6 max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
+                    <a href="#">
+                        <img class="rounded-t-lg" src="${element2.cover_image}" alt="" />
+                    </a>
+
+                    <div class="p-5">
+                        <a href="#">
+
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                                technology acquisitions 2021</h5>
+                        </a>
+                        <h3 class="font-extrabold">latest titele</h3>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-regular fa-calendar"></i>
+                            <p>${element2.author.posted_date??'no publish date'}</p>
+                        </div>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
+                            technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                        </a>
+                        <!-- name pic  -->
+                        <div class="flex items-center gap-4">
+                            <div class="">
+                                <img class="w-12 rounded-full" src="${element2.profile_image}" alt="">
+                            </div>
+                            <div class="">
+                                <p>${element2.author.name}</p>
+                                <p>${element2.author.designation??"unknown"}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+`;
+
+    latestPostContainer.appendChild(createnew3);
+  });
+};
+
+latestFetch();
 const viewCount = document.getElementById("viewCount");
 
 const viewChange = () => {
@@ -67,8 +123,13 @@ const showPost = (data) => {
                                         </div>
                                     </div>
                                     <div class="card-actions justify-end ">
-
-                                        <button onclick="addToRead('${element.title}','${element.view_count}')" class="btn  rounded-full bg-green-500 border-none "><i
+                                    
+                                        <button onclick="addToRead('${element.title.replace(
+                                          /'/g,
+                                          "@"
+                                        )}','${
+      element.view_count
+    }')" class="btn  rounded-full bg-green-500 border-none "><i
                                                 class="fa-regular fa-envelope-open text-white"></i>
                                         </button>
 
@@ -79,5 +140,6 @@ const showPost = (data) => {
                     </div>
     `;
     postCardContainer.appendChild(cardCreate);
+    // onclick="AddToList(${title.replace(/'/g,'@')})"
   });
 };
