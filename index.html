@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primaryColor: '#797DFC',
+                    }
+                }
+            }
+        }
+
+    </script>
 </head>
 
 <body>
@@ -43,42 +56,70 @@
         </section>
     </header>
     <main>
-       
 
-     <section>
-        <div class="card card-side bg-base-100 shadow-xl">
-            <figure><img class="w-8 rounded-md" src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"/></figure>
-            <div class="card-body">
-                <div class="flex">
-                    <p>#Music</p>
-                    <p>Author: Alwasdf Hods</p>
+
+        <section class="container md:mx-auto">
+
+            <div class="flex flex-col lg:flex-row gap-4 lg:gap-10">
+                <div class="">
+                    <div class="p-2 lg:p-6 card card-side bg-base-100 shadow-xl flex flex-col lg:flex-row">
+                        <figure><img class="w-8 rounded-md"
+                                src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
+                                alt="Movie" />
+                        </figure>
+                        <div class="card-body">
+                            <div class="flex">
+                                <p>#Music</p>
+                                <p>Author: Alwasdf Hods</p>
+                            </div>
+                            <h2 class="card-title">New movie is released!</h2>
+                            <p>Click the button to watch on Jetflix apsjdk lfjskjf lskjdflkjsdk fljaslkfjlsdf
+                                sfsldkfjsdkjfdkljf p.</p>
+                            <hr class=" border-dashed ">
+                            <div class="flex justify-between">
+                                <div class="flex flex-col lg:flex-row lg:gap-16">
+                                    <div class="flex justify-center items-center gap-3">
+                                        <i class="fa-regular fa-comment"></i>
+                                        <p>100</p>
+                                    </div>
+                                    <div class="flex justify-center items-center gap-3">
+                                        <i class="fa-regular fa-eye"></i>
+                                        <p>100</p>
+                                    </div>
+                                    <div class="flex justify-center items-center gap-3">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <p>100</p>
+                                    </div>
+                                </div>
+                                <div class="card-actions justify-end ">
+
+                                    <button class="btn  rounded-full bg-green-500 border-none "><i
+                                            class="fa-regular fa-envelope-open text-white"></i>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              <h2 class="card-title">New movie is released!</h2>
-              <p>Click the button to watch on Jetflix app.</p>
-              <hr class=" border-dashed ">
-              <div class="flex gap-16">
-                <div class="flex justify-center items-center gap-3">
-                    <i class="fa-regular fa-comment"></i>
-                  <p>100</p>
-                  </div>
-                  <div class="flex justify-center items-center gap-3">
-                    <i class="fa-regular fa-eye"></i>
-                  <p>100</p>
-                  </div>
-                  <div class="flex justify-center items-center gap-3">
-                    <i class="fa-regular fa-clock"></i>
-                  <p>100</p>
-                  </div>
-              </div>
-              <div class="card-actions justify-end">
-                
-                <button class="btn bg-green-600 rounded-full"><img src="img/read.svg" alt=""></button>
-              </div>
-            </div>
-          </div>
-     </section>                       
 
-                        
+                <div class="bg-[#EEEEEE] rounded-3xl p-4">
+                    <div class="flex justify-between">
+                        <h3 class="text-xl font-bold">Title</h3>
+                        <p>Mark as read (4)</p>
+                    </div>
+                    <div class=" bg-white rounded-lg gap-10 flex p-4">
+                        <p>10 kids unware of hteir halloween comtume</p>
+                        <div class="flex gap-1 items-center">
+                            <i class="fa-regular fa-eye"></i>
+                            <p>1568</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
     </main>
     <footer></footer>
     <script src="script.js"></script>
