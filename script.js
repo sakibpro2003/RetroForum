@@ -1,15 +1,14 @@
 const postCardContainer = document.getElementById("postCardContainer");
 const postViewContainer = document.getElementById("postViewContainer");
 const latestPostContainer = document.getElementById("latestPostContainer");
-
 let readCount = 0;
 async function fetchData() {
-  const response = await fetch();
-  // "https://openapi.programming-hero.com/api/retro-forum/posts"
+  const response = await fetch(
+    "https://openapi.programming-hero.com/api/retro-forum/posts"
+  );
 
   const data = await response.json();
   console.log(data.posts);
-
   showPost(data.posts);
 }
 
@@ -18,17 +17,17 @@ async function latestFetch() {
     "https://openapi.programming-hero.com/api/retro-forum/latest-posts"
   );
   const data2 = await res.json();
-  // console.log(data2[0].title);
   fetchLatest(data2);
 }
 const fetchLatest = (data2) => {
   data2.forEach((element2) => {
-    // console.log(element2.title)
     const createnew3 = document.createElement("div");
     createnew3.innerHTML = `
 <div class=" p-6 max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
                     <a href="#">
-                        <img class="rounded-t-lg" src="${element2.cover_image}" alt="" />
+                        <img class="rounded-t-lg" src="${
+                          element2.cover_image
+                        }" alt="" />
                     </a>
 
                     <div class="p-5">
@@ -40,7 +39,9 @@ const fetchLatest = (data2) => {
                         <h3 class="font-extrabold">latest titele</h3>
                         <div class="flex items-center gap-4">
                             <i class="fa-regular fa-calendar"></i>
-                            <p>${element2.author.posted_date??'no publish date'}</p>
+                            <p>${
+                              element2.author.posted_date ?? "no pusblish date"
+                            }</p>
                         </div>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
                             technology acquisitions of 2021 so far, in reverse chronological order.</p>
@@ -48,11 +49,15 @@ const fetchLatest = (data2) => {
                         <!-- name pic  -->
                         <div class="flex items-center gap-4">
                             <div class="">
-                                <img class="w-12 rounded-full" src="${element2.profile_image}" alt="">
+                                <img class="w-12 rounded-full" src="${
+                                  element2.profile_image
+                                }" alt="">
                             </div>
                             <div class="">
                                 <p>${element2.author.name}</p>
-                                <p>${element2.author.designation??"unknown"}</p>
+                                <p>${
+                                  element2.author.designation ?? "unknown"
+                                }</p>
                             </div>
 
                         </div>
@@ -89,16 +94,26 @@ const addToRead = (postName, view_count) => {
 };
 
 fetchData();
+
+
+
 const showPost = (data) => {
   data.forEach((element) => {
     const cardCreate = document.createElement("div");
     cardCreate.innerHTML = `
     <div class="">
                         <div class=" p-2 lg:p-6 card card-side bg-base-100 shadow-xl flex flex-col lg:flex-row">
-                            <figure><img class="w-20 rounded-md"
-                                    src="${element.image}"
-                                    alt="" />
-                            </figure>
+                        <div>
+                        <div class="avatar online">
+                        <div class="w-20 rounded-full">
+                          <img src="${element.image}" />
+                        </div>
+                      </div>
+                      <div class="avatar offline">
+                        <div class="w-20 rounded-full">
+                          <img src="${element.image}" />
+                        </div>
+                      </div></div>
                             <div class="card-body">
                                 <div class="flex">
                                     <p>#${element.category}</p>
@@ -140,6 +155,9 @@ const showPost = (data) => {
                     </div>
     `;
     postCardContainer.appendChild(cardCreate);
-    // onclick="AddToList(${title.replace(/'/g,'@')})"
+    onlineStatus(element.isActive);
   });
 };
+
+
+
