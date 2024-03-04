@@ -108,7 +108,6 @@ const addToRead = (postName, view_count) => {
   viewChange();
 };
 
-// fetchData();
 
 const showPost = (data) => {
   postCardContainer.textContent = "";
@@ -119,15 +118,13 @@ const showPost = (data) => {
     <div class="">
                         <div class=" p-2 lg:p-6 card card-side bg-base-100 shadow-xl flex flex-col lg:flex-row">
                         <div>
-                        <div class="avatar online">
+                        <div class="${element.isActive ? 'avatar online' : 'avatar offline'}">
                         <div class="w-20 rounded-full">
                           <img src="${element.image}" />
                         </div>
                       </div>
-                      <div class="avatar offline">
-                        <div class="w-20 rounded-full">
-                          <img src="${element.image}" />
-                        </div>
+                      <div class="${element.isActive ? 'avatar online' : 'avatar offline'}">
+                        
                       </div></div>
                             <div class="card-body">
                                 <div class="flex">
