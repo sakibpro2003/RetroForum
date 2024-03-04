@@ -52,15 +52,14 @@ const fetchLatest = (data2) => {
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
                                 technology acquisitions 2021</h5>
                         </a>
-                        <h3 class="font-extrabold">latest titele</h3>
+                        <h3 class="font-extrabold">${element2.title}</h3>
                         <div class="flex items-center gap-4">
                             <i class="fa-regular fa-calendar"></i>
                             <p>${
                               element2.author.posted_date ?? "no pusblish date"
                             }</p>
                         </div>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                            technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${element2.description}</p>
                         </a>
                         <!-- name pic  -->
                         <div class="flex items-center gap-4">
