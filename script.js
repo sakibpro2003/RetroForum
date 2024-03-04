@@ -1,20 +1,32 @@
 const postCardContainer = document.getElementById("postCardContainer");
 const postViewContainer = document.getElementById("postViewContainer");
 const latestPostContainer = document.getElementById("latestPostContainer");
-const searchBtn = document.getElementById('searchBtn')
-const searchFunc = () =>{
-  console.log(document.getElementById("inputField").value);
-}
+const searchBtn = document.getElementById("searchBtn");
 let readCount = 0;
-async function fetchData() {
+
+function getCategory() {
+  fetchData(document.getElementById("inputField").value);
+}
+
+async function fetchData(category) {
   const response = await fetch(
-    "https://openapi.programming-hero.com/api/retro-forum/posts"
+    `https://openapi.programming-hero.com/api/retro-forum/posts?category=${category}`
   );
 
   const data = await response.json();
   console.log(data.posts);
   showPost(data.posts);
 }
+async function fetchData2() {
+  const response4 = await fetch(
+    `https://openapi.programming-hero.com/api/retro-forum/posts?`
+  );
+
+  const data4 = await response4.json();
+  console.log(data4.posts);
+  showPost(data4.posts);
+}
+fetchData2();
 
 async function latestFetch() {
   const res = await fetch(
@@ -80,7 +92,6 @@ const viewCount = document.getElementById("viewCount");
 const viewChange = () => {
   viewCount.innerText = readCount;
 };
-
 const addToRead = (postName, view_count) => {
   const createNew = document.createElement("div");
   createNew.innerHTML = `
@@ -97,11 +108,11 @@ const addToRead = (postName, view_count) => {
   viewChange();
 };
 
-fetchData();
-
-
+// fetchData();
 
 const showPost = (data) => {
+  postCardContainer.textContent = "";
+
   data.forEach((element) => {
     const cardCreate = document.createElement("div");
     cardCreate.innerHTML = `
@@ -159,9 +170,5 @@ const showPost = (data) => {
                     </div>
     `;
     postCardContainer.appendChild(cardCreate);
-    // onlineStatus(element.isActive);
   });
 };
-
-
-
