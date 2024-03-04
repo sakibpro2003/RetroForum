@@ -2,6 +2,7 @@ const postCardContainer = document.getElementById("postCardContainer");
 const postViewContainer = document.getElementById("postViewContainer");
 const latestPostContainer = document.getElementById("latestPostContainer");
 const searchBtn = document.getElementById("searchBtn");
+const loader = document.getElementById("loader");
 let readCount = 0;
 
 function getCategory() {
@@ -16,7 +17,17 @@ async function fetchData(category) {
   const data = await response.json();
   console.log(data.posts);
   showPost(data.posts);
+  loader.classList.remove("hidden");
+  addHidden();
 }
+
+function addHidden() {
+  setTimeout(function () {
+  loader.classList.add("hidden");
+  }, 2000);
+}
+
+// Call the function
 async function fetchData2() {
   const response4 = await fetch(
     `https://openapi.programming-hero.com/api/retro-forum/posts?`
@@ -59,7 +70,9 @@ const fetchLatest = (data2) => {
                               element2.author.posted_date ?? "no pusblish date"
                             }</p>
                         </div>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${element2.description}</p>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${
+                          element2.description
+                        }</p>
                         </a>
                         <!-- name pic  -->
                         <div class="flex items-center gap-4">
@@ -107,7 +120,6 @@ const addToRead = (postName, view_count) => {
   viewChange();
 };
 
-
 const showPost = (data) => {
   postCardContainer.textContent = "";
 
@@ -117,12 +129,16 @@ const showPost = (data) => {
     <div class="">
                         <div class=" p-2 lg:p-6 card card-side bg-base-100 shadow-xl flex flex-col lg:flex-row">
                         <div>
-                        <div class="${element.isActive ? 'avatar online' : 'avatar offline'}">
+                        <div class="${
+                          element.isActive ? "avatar online" : "avatar offline"
+                        }">
                         <div class="w-20 rounded-full">
                           <img src="${element.image}" />
                         </div>
                       </div>
-                      <div class="${element.isActive ? 'avatar online' : 'avatar offline'}">
+                      <div class="${
+                        element.isActive ? "avatar online" : "avatar offline"
+                      }">
                         
                       </div></div>
                             <div class="card-body">
